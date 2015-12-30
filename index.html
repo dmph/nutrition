@@ -1,15 +1,20 @@
-<!doctype html>
-<html lang="en" ng-app>
+<!DOCTYPE html>
+<html ng-app="nutritionApp">
 <head>
-  <meta charset="utf-8">
-  <title>My HTML File</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
-  <script src="bower_components/angular/angular.js"></script>
-</head>
-<body>
+    <title>Hello World, AngularJS - ViralPatel.net</title>
 
-  <p>Nothing here {{'yet' + '!'}}</p>
+</head>
+<body ng-controller="SearchCtrl">
+     
+    Write some text in textbox:
+    <input type="text" ng-model="searchinput" ng-change="inputChange()" />
+ 
+    <h1>Search Input: {{ searchinput }}</h1>
+    <h2>First Result: {{ firstResult }}</h2>
+        
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
-</html>
