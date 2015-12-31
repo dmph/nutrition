@@ -23,9 +23,8 @@ angular.module('nutritionApp', [])
     function fetch(){
     	var queryURL = format(baseurl,[$scope.searchinput, appID, appKey]);
     	console.log(queryURL);
-    	console.log();
-     	//$http.get(queryURL)
-       	 //.success(function(response){ $scope.details = response; });
+     	$http.get(queryURL)
+       	 .success(function(response){ $scope.results = response.hits; });
     }
 
 	function format(source, params) {

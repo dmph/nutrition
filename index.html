@@ -11,6 +11,10 @@
  
     <h1>Search Input: {{ searchinput }}</h1>
     <h2>First Result: {{ firstResult }}</h2>
+    <table >
+  		<tr><th>{{ results && searchinput ? "Search results, " : "No results, " }}homie!</th></tr>
+  		<tr ng-show="searchinput" ng-repeat="food in results"><td><a href="/">{{ food.fields.item_name }}</a></td></tr>
+	</table>
         
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
