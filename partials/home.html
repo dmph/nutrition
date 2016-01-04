@@ -1,0 +1,6 @@
+Search for a food:
+<input type="text" ng-model="searchinput" ng-change="inputChange()" />
+	    <table >
+		<tr><th>{{ results.length != 0 ? "Search results, " : "No results, " }}homie!</th></tr>
+		<tr ng-show="searchinput" ng-repeat="food in results"><td><a href="/">{{ food.fields.item_name }}</a></td></tr>
+</table>

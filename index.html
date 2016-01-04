@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="nutritionApp">
 <head>
-    <title>Hello World, AngularJS - ViralPatel.net</title>
+    <title>You eatin' good, homie?</title>
 
 </head>
 <body ng-controller="SearchCtrl">
-     
-    Write some text in textbox:
-    <input type="text" ng-model="searchinput" ng-change="inputChange()" />
- 
-    <h1>Search Input: {{ searchinput }}</h1>
-    <h2>First Result: {{ firstResult }}</h2>
-    <table >
-  		<tr><th>{{ results && searchinput ? "Search results, " : "No results, " }}homie!</th></tr>
-  		<tr ng-show="searchinput" ng-repeat="food in results"><td><a href="/">{{ food.fields.item_name }}</a></td></tr>
-	</table>
-        
+     <div ng-view>
+	    Write some text in textbox:
+	    <input type="text" ng-model="searchinput" ng-change="inputChange()" />
+	 	    <table >
+	  		<tr><th>{{ results.length != 0 ? "Search results, " : "No results, " }}homie!</th></tr>
+	  		<tr ng-show="searchinput" ng-repeat="food in results"><td><a href="/">{{ food.fields.item_name }}</a></td></tr>
+		</table>
+	</div>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/app.js"></script>
 

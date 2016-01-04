@@ -5,10 +5,28 @@
 //account required
 var appID = '8123a821';
 var appKey = '82b3842689f4fed71b105c1619ead491';
-var baseurl = 'https://api.nutritionix.com/v1_1/search/{0}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId={1}&appKey={2}';
+var baseurl = 'https://api.nutritionix.com/v1_1/search/{0}?fields=item_name&appId={1}&appKey={2}';
+//var baseurl = 'https://api.nutritionix.com/v1_1/search/{0}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId={1}&appKey={2}';
 
-angular.module('nutritionApp', [])
-  .controller('SearchCtrl', function($scope, $http){
+var nutritionApp = angular.module('nutritionApp', ["ngRoute"]);
+
+nutritionApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'partials/home.html',
+        controller: 'SearchCtrl'
+      }).
+      when('/:encodedItem', {
+        templateUrl: 'partials/item.html',
+        controller: 'ItemCtrl'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  }]);
+
+  nutritionApp.controller('SearchCtrl', function($scope, $http){
     var pending;
 
     //wait and see if more charachters are coming
@@ -21,6 +39,7 @@ angular.module('nutritionApp', [])
     };
 
     function fetch(){
+
     	var queryURL = format(baseurl,[$scope.searchinput, appID, appKey]);
     	console.log(queryURL);
      	$http.get(queryURL)
@@ -36,3 +55,6 @@ angular.module('nutritionApp', [])
 	    return source;
 	}
   });
+
+nutritionApp.controller('ItemCtrl', function($scope, $http){
+});
